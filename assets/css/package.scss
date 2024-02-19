@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+$yellow: #f6f792;
+$black: #333745;
+$blue: #77c4d3;
+$lightBlue: #daede2;
+$red: #ea2e49;
+$white: #fff;
+
+$mainFont: "Open Sans", sans-serif;
+
+body {
+  background: $black;
+  color: $white;
+  font-family: $mainFont;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 1px rgba($black, 0.6);
+}
+
+// PRICING TABLE
+.pricing-table {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+
+  // INDIVIDUAL PRICING TABLE
+  .card {
+    width: 220px;
+    height: 370px;
+    padding: 30px;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 46px -4px rgba(0, 0, 0, 0.6);
+    transition: all 0.2s ease-in-out;
+
+    // SPECIFIC STYLING FOR THE FIRST TABLE
+    &:nth-child(1) {
+      background: #7f7fd5;
+      background: linear-gradient(to left, #91eae4, #86a8e7, #7f7fd5);
+
+      .price {
+        &::before {
+          content: "$20";
+        }
+      }
+    }
+
+    // SPECIFIC STYLING FOR THE SECOND TABLE
+    &:nth-child(2) {
+      margin: 0 30px;
+      z-index: 2;
+      width: 250px;
+      height: 400px;
+      background: #ff416c;
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+
+      .price {
+        &::before {
+          content: "$50";
+        }
+      }
+    }
+
+    // SPECIFIC STYLING FOR THE THIRD TABLE
+    &:nth-child(3) {
+      background: #00b09b;
+      background: linear-gradient(to right, #96c93d, #00b09b);
+
+      .price {
+        &::before {
+          content: "$100";
+        }
+      }
+    }
+
+    // SPECIFIC STYLING FOR THE FIRST AND LAST TABLE
+    &:nth-child(1),
+    &:nth-child(3) {
+      .price {
+        font-size: 6rem;
+      }
+
+      .buy-button {
+        width: 230px;
+        height: 170px;
+        h3 {
+          top: 12%;
+          left: 10%;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    // TYPE OF SUBSCRIPTION
+    .type {
+      margin-top: 30px;
+      letter-spacing: 0.1rem;
+    }
+
+    // PRICE
+    .price {
+      font-size: 7.5rem;
+      position: relative;
+      margin: 10px 0px 20px;
+      z-index: 2;
+
+      span {
+        font-size: 1.8rem;
+        position: absolute;
+        left: -15%;
+        top: 65%;
+      }
+
+      &::before {
+        position: absolute;
+        content: "";
+        color: rgba($white, 0.06);
+        font-size: 9.5rem;
+        z-index: -1;
+        right: -30%;
+        bottom: 15%;
+        text-shadow: 0 0 0px rgba($black, 0);
+        transition: all 1s ease-in-out;
+      }
+    }
+
+    // PLAN WITH THE TWO BORDERS ON EACH SIDE
+    .plan {
+      font-size: 1.3rem;
+      position: relative;
+      margin-bottom: 10px;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        width: 35px;
+        height: 2px;
+        background: $white;
+        bottom: 40%;
+        transition: all 0.2s ease-out;
+      }
+
+      &::before {
+        right: 100%;
+        transform: translate(-50%, -50%);
+      }
+      &::after {
+        right: -100%;
+        transform: translate(-0%, -50%);
+      }
+    }
+
+    // DETAILS OF THE PLAN
+    .details {
+      text-transform: capitalize;
+      li {
+        margin: 15px 0px;
+      }
+    }
+
+    // BUTTON CONTAINER
+    .buy-button {
+      cursor: pointer;
+      position: absolute;
+      width: 250px;
+      height: 180px;
+      background: $white;
+      border-radius: 15%;
+      right: -34%;
+      bottom: -27%;
+      transition: all 0.4s ease-in-out;
+
+      // BUTTON
+      h3 {
+        text-shadow: 0 0 0;
+        text-decoration: none;
+        color: $white;
+        position: absolute;
+        left: 8%;
+        top: 10%;
+        color: $black;
+        font-size: 1.2rem;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+
+    // HOVER
+    &:hover {
+      transform: scale(1.02);
+
+      // PRICE
+      .price {
+        &::before {
+          animation: text-hover 1s ease-in-out infinite normal;
+        }
+      }
+
+      // PLAN
+      .plan {
+        &::before {
+          right: 90%;
+        }
+        &::after {
+          right: -90%;
+        }
+      }
+
+      // HOVER BUTTON
+      .buy-button {
+        width: 100%;
+        right: 0%;
+        border-radius: 0%;
+        h3 {
+          left: 50%;
+          transform: translate(-50%, 0%);
+        }
+      }
+    }
+  }
+}
+
+// KEYFRAMES
+@keyframes text-hover {
+  0% {
+    right: -30%;
+  }
+  50% {
+    right: -37%;
+  }
+  100% {
+    right: -30%;
+  }
+}
